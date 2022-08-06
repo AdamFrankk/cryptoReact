@@ -66,7 +66,12 @@ const Header = ({ links = nav }) => {
   }, []);
 
   const connectWallet = () => {
-    requestAccount().then(res => { localStorage.setItem('metamaskToken', res) })
+    requestAccount().then(res => {
+      setData({
+        address: res,
+        isLogged: true,
+      }), localStorage.setItem('metamaskToken', res)
+    })
   }
 
   return (
@@ -90,7 +95,7 @@ const Header = ({ links = nav }) => {
           </div>
           <div className={style.header__profile}>
             <div className={style.header__profileToken}>{data.address.substring(0, 16) + "..."}</div>
-            
+
             <div className={style.header__profileOpen}>
               <img src={avatar} alt="avatar.png" className={style.header__avatarImg} />
             </div>

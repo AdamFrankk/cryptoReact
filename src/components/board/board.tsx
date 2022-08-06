@@ -42,27 +42,7 @@ const Board = () => {
                         <div className={style.board__headerCount}>Count</div>
                     </div>
                     <div className={style.board__row}>
-                        <div className={style.board__tokenName}>Bnb</div>
-                        <div className={style.board__tokenCount}>{balance}</div>
-                    </div>
-                    <div className={style.board__row}>
-                        <div className={style.board__tokenName}>Bnb</div>
-                        <div className={style.board__tokenCount}>{balance}</div>
-                    </div>
-                    <div className={style.board__row}>
-                        <div className={style.board__tokenName}>Bnb</div>
-                        <div className={style.board__tokenCount}>{balance}</div>
-                    </div>
-                    <div className={style.board__row}>
-                        <div className={style.board__tokenName}>Bnb</div>
-                        <div className={style.board__tokenCount}>{balance}</div>
-                    </div>
-                    <div className={style.board__row}>
-                        <div className={style.board__tokenName}>Bnb</div>
-                        <div className={style.board__tokenCount}>{balance}</div>
-                    </div>
-                    <div className={style.board__row}>
-                        <div className={style.board__tokenName}>Bnb</div>
+                        <div className={style.board__tokenName}>ETH</div>
                         <div className={style.board__tokenCount}>{balance}</div>
                     </div>
                 </div>

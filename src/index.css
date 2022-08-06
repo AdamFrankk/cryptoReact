@@ -13,8 +13,7 @@ body {
   font-family: -apple-system, Roboto, Verdana, Tahoma, sans,
     sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: 
+  -moz-osx-font-smoothing: grayscale; 
 }
 
 code {
