@@ -1,0 +1,84 @@
+.header {
+  display: flex;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  box-shadow: 1px 2px 4px #dfdfdf;
+  &__logoImg {
+    max-height: 70px;
+  }
+  &__links {
+    display: flex;
+    align-items: center;
+    column-gap: 30px;
+    margin-left: 30px;
+  }
+  &__linkLabel {
+    font-size: 18px;
+    color:#0b5da0;
+    font-weight: 500;
+    line-height: 20px;
+    &:hover {
+      color:#1680d7;
+      cursor: pointer;
+    }
+  }
+  &__connectWallet {
+    margin-left: auto;
+  }
+  &__connectButton {
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: Roboto, Verdana, Tahoma, sans;
+    padding: 12px 36px;
+    border-radius: 100px;
+    color: #fff;
+    transition: all 0.25s;
+    background: #2196f3;
+    &:hover {
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+      background: #39a1f4;
+    }
+    &:active {
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+      background: #0d8aee;
+    }
+  }
+  &__wallet {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    gap: 30px;
+  }
+  &__profile {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  &__avatarImg {
+    max-height: 40px;
+  }
+  &__swapButton {
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: Roboto, Verdana, Tahoma, sans;
+    padding: 12px 36px;
+    border-radius: 100px;
+    color: #fff;
+    transition: all 0.25s;
+    background: #6f13e0;
+    &:hover {
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+      background: #4f21f2;
+    }
+    &:active {
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+      background: #1b07cb;
+    }
+  }
+}
