@@ -27,9 +27,9 @@ const nav = [
 ];
 
 async function requestAccount() {
-  const provider = await detectEthereumProvider()
-  const web3: any = new Web3(provider);
-  const accounts: any = await web3.eth.requestAccounts();
+  const accounts: any = await window?.ethereum?.request({
+    method: 'eth_requestAccounts',
+  })
   return accounts[0]
 }
 
