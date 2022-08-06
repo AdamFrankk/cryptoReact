@@ -35,8 +35,8 @@ const Board = () => {
             <div className={style.board__label}>Your account token: <span className={style.board__tokenLabel}>{data.address}</span></div>
             <div className={style.board__table}>
                 <div className={style.board__header}>
-                    <div className={style.board__tokenName}>Name</div>
-                    <div className={style.board__tokenCount}>Count</div>
+                    <div className={style.board__headerName}>Name</div>
+                    <div className={style.board__headerCount}>Count</div>
                 </div>
                 <div className={style.board__row}>
                     <div className={style.board__tokenName}>Bnb</div>

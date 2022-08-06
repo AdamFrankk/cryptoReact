@@ -12,9 +12,6 @@
         margin-bottom: 2.5rem;
         color: #7f08ff;
     }
-    &__tokenCount {
-        color: #7f08ff;
-    }
     &__table {
         margin-top: 2rem;
         border: 1px solid #111;
@@ -38,6 +35,9 @@
         color: #1680d7;
         padding-bottom: 10px;
         border-bottom: 2px solid #191919;
+    }
+    &__tokenCount {
+        color: #7f08ff;
     }
 }
   

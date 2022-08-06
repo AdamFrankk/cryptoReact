@@ -42,7 +42,6 @@ const Header = ({ links = nav }) => {
     address: "",
     isLogged: false
   });
-  const isMetamaskSupported: boolean = typeof window.ethereum !== 'undefined'
 
   useEffect(() => {
     window.ethereum.request({ method: 'eth_accounts' }).then(
@@ -65,9 +64,7 @@ const Header = ({ links = nav }) => {
   }, []);
 
   const connectWallet = () => {
-    if (isMetamaskSupported) {
-      getAccount().then(res => { localStorage.setItem('metamaskToken', res) })
-    }
+    getAccount().then(res => { localStorage.setItem('metamaskToken', res) })
   }
 
   return (
