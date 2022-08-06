@@ -7,24 +7,24 @@ import avatar from "../../static/icons/avatar.png";
 import Web3 from 'web3/dist/web3.min.js'
 import detectEthereumProvider from "@metamask/detect-provider";
 
-const nav = [
-  {
-    name: "Trade",
-    link: "/trade",
-  },
-  {
-    name: "Buy ETH",
-    link: "/buy",
-  },
-  {
-    name: "Documentation",
-    link: "/documentation",
-  },
-  {
-    name: "Contacts",
-    link: "/contacts",
-  },
-];
+// const nav = [
+//   {
+//     name: "Trade",
+//     link: "/trade",
+//   },
+//   {
+//     name: "Buy ETH",
+//     link: "/buy",
+//   },
+//   {
+//     name: "Documentation",
+//     link: "/documentation",
+//   },
+//   {
+//     name: "Contacts",
+//     link: "/contacts",
+//   },
+// ];
 
 async function requestAccount() {
   const accounts: any = await window?.ethereum?.request({
@@ -40,37 +40,45 @@ async function getAccount() {
   return accounts
 }
 
-const Header = ({ links = nav }) => {
+const Header = () => {
   const [data, setData] = useState({
     address: "",
     isLogged: false
   });
+  const isMetamaskSupported: boolean = typeof window.ethereum !== 'undefined'
   useEffect(() => {
-    getAccount().then(
-      (response) => {
-        console.log(response)
-        if (response[0] != null) {
-          localStorage.setItem('metamaskToken', response[0])
-        }
-        else {
-          localStorage.removeItem('metamaskToken')
-        }
-      },
-    );
-    if (localStorage.getItem('metamaskToken')) {
-      setData({
-        address: localStorage.getItem('metamaskToken'),
-        isLogged: true,
-      })
+    if (isMetamaskSupported) {
+      getAccount().then(
+        (response) => {
+          console.log(response)
+          if (response[0] != null) {
+            localStorage.setItem('metamaskToken', response[0])
+          }
+          else {
+            localStorage.removeItem('metamaskToken')
+          }
+        },
+      );
+      if (localStorage.getItem('metamaskToken')) {
+        setData({
+          address: localStorage.getItem('metamaskToken'),
+          isLogged: true,
+        })
+      }
     }
   }, []);
 
   const connectWallet = () => {
     requestAccount().then(res => {
-      setData({
-        address: res,
-        isLogged: true,
-      }), localStorage.setItem('metamaskToken', res)
+      if (isMetamaskSupported) {
+        setData({
+          address: res,
+          isLogged: true,
+        }), localStorage.setItem('metamaskToken', res)
+      }
+      else {
+        window.location.href ="https://metamask.io/download/"
+      }
     })
   }
 
@@ -79,20 +87,17 @@ const Header = ({ links = nav }) => {
       <div className={style.header__logo}>
         <img src={mainLogo} alt="logo.png" className={style.header__logoImg} />
       </div>
-      <div className={style.header__links}>
+      {/* <div className={style.header__links}>
         {links &&
           Array.isArray(links) &&
           links.map((item) => (
-            // <Link key={item.name} to={item.link} className={style.header__link}>
+            <Link key={item.name} to={item.link} className={style.header__link}>
             <span className={style.header__linkLabel}>{item.name}</span>
-            // </Link>
+            </Link>
           ))}
-      </div>
+      </div> */}
       {data.isLogged ? (
         <div className={style.header__wallet}>
-          <div className={style.header__swap}>
-            <button className={style.header__swapButton}>Swap</button>
-          </div>
           <div className={style.header__profile}>
             <div className={style.header__profileToken}>{data.address.substring(0, 16) + "..."}</div>
 
