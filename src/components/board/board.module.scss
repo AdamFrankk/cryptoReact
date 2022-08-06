@@ -39,5 +39,31 @@
     &__tokenCount {
         color: #7f08ff;
     }
+    &__connectWallet {
+        width: 50%;
+        display: flex;
+        align-items: center;
+    }
+    &__connectButton {
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+        font-size: 16px;
+        font-family: Roboto, Verdana, Tahoma, sans;
+        padding: 12px 36px;
+        border-radius: 100px;
+        color: #fff;
+        transition: all 0.25s;
+        background: #2196f3;
+        &:hover {
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+          background: #39a1f4;
+        }
+        &:active {
+          box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+          text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+          background: #0d8aee;
+        }
+      }
 }
   

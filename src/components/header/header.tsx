@@ -5,6 +5,7 @@ import style from "./header.module.scss";
 import mainLogo from "../../static/logo.png";
 import avatar from "../../static/icons/avatar.png";
 import Web3 from 'web3/dist/web3.min.js'
+import detectEthereumProvider from "@metamask/detect-provider";
 
 const nav = [
   {
@@ -25,16 +26,18 @@ const nav = [
   },
 ];
 
-declare global {
-  interface Window {
-    ethereum?: any;
-  }
+async function requestAccount() {
+  const provider = await detectEthereumProvider()
+  const web3: any = new Web3(provider);
+  const accounts: any = await web3.eth.requestAccounts();
+  return accounts[0]
 }
 
 async function getAccount() {
-  const web3: any = new Web3(Web3.givenProvider || 'http://localhost:7545');
-  const accounts: any = await web3.eth.requestAccounts();
-  return accounts[0]
+  const provider = await detectEthereumProvider()
+  const web3: any = new Web3(provider);
+  const accounts: any = await web3.eth.getAccounts();
+  return accounts
 }
 
 const Header = ({ links = nav }) => {
@@ -42,9 +45,8 @@ const Header = ({ links = nav }) => {
     address: "",
     isLogged: false
   });
-
   useEffect(() => {
-    window.ethereum.request({ method: 'eth_accounts' }).then(
+    getAccount().then(
       (response) => {
         console.log(response)
         if (response[0] != null) {
@@ -64,7 +66,7 @@ const Header = ({ links = nav }) => {
   }, []);
 
   const connectWallet = () => {
-    getAccount().then(res => { localStorage.setItem('metamaskToken', res) })
+    requestAccount().then(res => { localStorage.setItem('metamaskToken', res) })
   }
 
   return (
